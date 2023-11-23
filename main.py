@@ -6,6 +6,7 @@ import streamlit as st
 import matplotlib.font_manager as fm
 from PIL import Image
 
+
 #폰트
 fm.fontManager.addfont('font.ttf')
 plt.rc('font', family=fm.FontProperties(fname='font.ttf').get_name())
