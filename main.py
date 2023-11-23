@@ -73,7 +73,7 @@ for i in code.index:
         gu.append(code.loc[i,'RESC_CT_NM'])
 
 #자치구명에 따른 생활인구 그래프 웹페이지에서 보여주기
-st.title('서울시 자치구별 생활 인구 분석 기반 기능 지역 분화 현상 관찰')
+st.title('서울시 자치구별 생활 인구 분석 기반 도시 내 지역 분화 현상 관찰')
 tab1, tab2, tab3 = st.tabs(['자치구별 생활인구', '기능 지역 분화 현상', 'Dataset'])
 
 with tab1:
@@ -94,13 +94,13 @@ with tab1:
         st.markdown(loc + "는 <span style='color: blue;'>__주거지역__</span>입니다.", unsafe_allow_html=True)
 
 with tab2:
-    city_img = Image.open('city.png')
+    city_img = Image.open('city.jpg')
     Seoul_img = Image.open('Seoul.jpg')
-    st.subheader("도시 구조도")
+    st.subheader("도시 내부 구조")
     st.write("")
     st.image(city_img)
     st.write("")
-    st.subheader("서울시 내 기능 지역 분화 현황")
+    st.subheader("서울시 내 지역 분화 현상")
     st.write("")
     st.image(Seoul_img)
 
