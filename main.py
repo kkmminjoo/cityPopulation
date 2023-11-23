@@ -94,7 +94,7 @@ with tab1:
         st.markdown(loc + "는 <span style='color: blue;'>__주거지역__</span>입니다.", unsafe_allow_html=True)
 
 with tab2:
-    city_img = Image.open('city.jpg')
+    city_img = Image.open('city.png')
     Seoul_img = Image.open('Seoul.jpg')
     st.subheader("도시 내부 구조")
     st.write("")
