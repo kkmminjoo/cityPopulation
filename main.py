@@ -72,30 +72,41 @@ for i in code.index:
         gu.append(code.loc[i,'RESC_CT_NM'])
 
 #자치구명에 따른 생활인구 그래프 웹페이지에서 보여주기
-st.sidebar.title('자치구 선택')
-loc = st.sidebar.selectbox('생활인구를 확인하고 싶은 자치구를 선택하세요', gu)
-st.title('서울시 내 자치구별 생활 인구 분석')
+st.title('서울시 자치구별 생활 인구 분석을 통한 기능 지역 분화 현상 관찰')
 tab1, tab2, tab3 = st.tabs(['자치구별 생활인구', '기능 지역 분화 현상', 'Dataset'])
 
-with tab2:
-    city_img = Image.open('city.png')
-    Seoul_img = Image.open('Seoul.png')
-
-    col1, col2 =st.columns([1,1])
-    with col1: st.subheader("도시 구조도")
-    col1.image(city_img)
-    with col2: st.subheader("서울시 기능 지역 분화 현황")
-    col2.image(Seoul_img)
-
 with tab1:
+    st.sidebar.title('자치구 선택')
+    loc = st.sidebar.selectbox('생활인구를 확인하고 싶은 자치구를 선택하세요', gu)  
     data = sector(loc)
     name, mean = data.de_facto_population()
     plt.figure(figsize=(10, 6))
-    plt.bar(mean.index, mean['평균 총생활인구수'])
     st.subheader(loc+' 생활인구')
-    st.write(name + " 시간대별 생활인구")
-    st.pyplot(plt)
+    plt.title(name + " 시간대별 생활인구")
     if (sum(mean['평균 총생활인구수'][0:8]) + sum(mean['평균 총생활인구수'][20:])) // 12 < sum(mean['평균 총생활인구수'][8:20]) // 12:
+        plt.bar(mean.index, mean['평균 총생활인구수'], color='red')
+        st.pyplot(plt)
         st.markdown(loc + "는 <span style='color:red;'>__상업 및 공업지역__</span>입니다.", unsafe_allow_html=True)
     else:
+        plt.bar(mean.index, mean['평균 총생활인구수'], color='blue')
+        st.pyplot(plt)
         st.markdown(loc + "는 <span style='color: blue;'>__주거지역__</span>입니다.", unsafe_allow_html=True)
+
+with tab2:
+    city_img = Image.open('city.png')
+    Seoul_img = Image.open('Seoul.jpg')
+    st.subheader("도시 구조도")
+    st.write("")
+    st.image(city_img)
+    st.write("")
+    st.subheader("서울시 내 기능 지역 분화 현황")
+    st.write("")
+    st.image(Seoul_img)
+
+with tab3:
+    st.write("__서울 열린데이터 광장__")
+    st.markdown("""
+- 서울 생활인구(내국인)
+- 서울 생활인구(장기체류 외국인)
+- 서울 생활인구(단기체류 외국인)
+""")
