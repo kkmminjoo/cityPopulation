@@ -73,7 +73,7 @@ for i in code.index:
         gu.append(code.loc[i,'RESC_CT_NM'])
 
 #자치구명에 따른 생활인구 그래프 웹페이지에서 보여주기
-st.title('서울시 자치구별 생활 인구 분석을 통한 기능 지역 분화 현상 관찰')
+st.title('서울시 자치구별 생활 인구 분석 기반 기능 지역 분화 현상 관찰')
 tab1, tab2, tab3 = st.tabs(['자치구별 생활인구', '기능 지역 분화 현상', 'Dataset'])
 
 with tab1:
