@@ -82,6 +82,7 @@ with tab1:
     data = sector(loc)
     name, mean = data.de_facto_population()
     plt.figure(figsize=(10, 6))
+    plt.ticklabel_format(style='plain', axis='y')
     st.subheader(loc+' 생활인구')
     plt.title(name + " 시간대별 생활인구")
     if (sum(mean['평균 총생활인구수'][0:8]) + sum(mean['평균 총생활인구수'][20:])) // 12 < sum(mean['평균 총생활인구수'][8:20]) // 12:
